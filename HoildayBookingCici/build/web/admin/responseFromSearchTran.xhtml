@@ -1,0 +1,65 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"> 
+    <h:head>
+<title>Search for a transaction.</title>
+    <h:outputStylesheet library="css" name="table-style.css" />
+</h:head>
+<h:body>
+  <h1>Welcome,#{userBean.Text()}</h1>
+<hr/>
+
+      <table class="order-table">
+                <tr>
+                    <th class="order-table-header" >Id</th>
+            
+                    <th class="order-table-header" > Name</th>
+                
+                   
+                </tr>
+                <tbody>
+     <h2>Here is your transactions</h2>
+     <ui:repeat var="HBTransaction" value="#{transactionBean.searchTransaction()}" varStatus="status">
+                        <h:panelGroup rendered="#{status.even}">
+                            <tr>
+                               
+                                <td class="order-table-even-row">
+                                    <h:link value="#{HBTransaction.id}" outcome="detail">
+                                              <f:param name="Id" value="#{HBTransaction.id}"></f:param>
+                                        </h:link>
+                                </td>
+                            
+                                <td class="order-table-even-row">#{HBTransaction.name}</td>
+                          
+
+                            </tr>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{status.odd}">
+                            <tr>
+                                <td class="order-table-odd-row"><h:link value="#{HBTransaction.id}" outcome="detail">
+                                              <f:param name="Id" value="#{HBTransaction.id}"></f:param>
+                                        </h:link>
+                                    
+                                </td>
+                         
+                                <td class="order-table-odd-row">#{HBTransaction.name}</td>
+                           
+                            </tr>
+                        </h:panelGroup>
+                    </ui:repeat>
+                </tbody>
+            </table>   
+
+
+                   <p>Go back to the main page <h:link outcome="index" value=" Back to main page" />.</p> 
+    		
+     
+
+</h:body> 
+
+    
+</html>
+
+

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>Holiday Booking System</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <h:outputStylesheet library="css" name="table-style.css" />
+    <script src="js/modernizr.custom.js"></script>
+    </h:head>
+<h:body>
+
+		<article> 
+             <h1>Welcome,#{userBean.Text()}</h1>
+            <table class="order-table">
+                <tr>
+                    
+                    <th class="order-table-header" > Name</th>
+                    <th class="order-table-header" > Type</th>
+                    <th class="order-table-header" > Description</th>
+                     <th class="order-table-header" > Date</th>
+                     <th class="order-table-header" > Amount</th>
+
+                </tr>
+                <tbody>
+                    <ui:repeat var="HBTransaction" value="#{transactionBean.addTransaction(transactionBean.saveTransaction())}" varStatus="status">
+                        <h:panelGroup rendered="#{status.even}">
+                            <tr>
+                               
+                                <td class="order-table-even-row">#{HBTransaction.name}</td>
+                                <td class="order-table-even-row">#{HBTransaction.type}</td> 
+                                 <td class="order-table-even-row">#{HBTransaction.description}</td>
+                                <td class="order-table-even-row">#{HBTransaction.date}</td>
+                                 <td class="order-table-even-row">#{HBTransaction.amount}</td>
+                            </tr>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{status.odd}">
+                            <tr>
+                               
+                                <td class="order-table-odd-row"> #{HBTransaction.name}</td>
+                                <td class="order-table-odd-row"> #{HBTransaction.type}</td>
+                                 <td class="order-table-odd-row">#{HBTransaction.description}</td>
+                                  <td class="order-table-odd-row">#{HBTransaction.date}</td>
+                                 <td class="order-table-odd-row">#{HBTransaction.amount}</td>
+                            </tr>
+                        </h:panelGroup>
+                    </ui:repeat>
+                </tbody>
+            </table>   
+
+           
+            <!-- End Form --> 
+        </article> 
+
+   <p><h:link outcome="profile" value="View your booking history" />.</p> 
+        
+								<script>
+                                                                    	//  The function to change the class
+			var changeClass = function (r,className1,className2) {
+				var regex = new RegExp("(?:^|\\s+)" + className1 + "(?:\\s+|$)");
+				if( regex.test(r.className) ) {
+					r.className = r.className.replace(regex,' '+className2+' ');
+			    }
+			    else{
+					r.className = r.className.replace(new RegExp("(?:^|\\s+)" + className2 + "(?:\\s+|$)"),' '+className1+' ');
+			    }
+			    return r.className;
+			};	
+
+			//  Creating our button in JS for smaller screens
+			var menuElements = document.getElementById('menu');
+			menuElements.insertAdjacentHTML('afterBegin','<button type="button" id="menutoggle" class="navtoogle" aria-hidden="true"><i aria-hidden="true" class="icon-menu"> </i> Menu</button>');
+
+			//  Toggle the class on click to show / hide the menu
+			document.getElementById('menutoggle').onclick = function() {
+				changeClass(this, 'navtoogle active', 'navtoogle');
+			}
+			document.onclick = function(e) {
+				var mobileButton = document.getElementById('menutoggle'),
+					buttonStyle =  mobileButton.currentStyle ? mobileButton.currentStyle.display : getComputedStyle(mobileButton, null).display;
+			}
+		</script>
+
+     <p>Go back to the main page <h:link outcome="index" value=" Back to main page" />.</p> 
+
+<div class="footer1-bg">
+
+<div class="footer1">
+	<p class="w3-link"><span>Holiday Booking</span></p>
+</div>
+</div>
+
+</h:body>   
+</html>
+

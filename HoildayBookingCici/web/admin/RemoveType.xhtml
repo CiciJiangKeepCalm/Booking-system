@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"> 
+    <h:head>
+<title>Cancel type</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+</h:head>
+  <h:body class="container"> 
+        <!-- Start Header --> 
+        <header> 
+             <h1>Welcome,#{userBean.Text()}</h1>
+        </header> 
+
+            <!-- Form -->
+            <div class="well bs-component form-horizontal">
+<h:form>
+ <div class="form-group #{!id.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Type Id" />
+                            <div class="col-lg-10">
+                                <h:selectOneMenu value="#{typeBean.id}">
+                                    <f:selectItems value="#{typeBean.getAllTypes()}" var="Type"
+                                                   itemLabel="#{Type.id}" itemValue="#{Type.id}" />
+                                                    </h:selectOneMenu>
+                                            
+   
+                                <h:message for="id" class="#{!id.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+
+                                         
+    
+    <h:commandButton id="submit" value="Cancel type" action="#{typeBean.removeType()}" class="btn btn-primary"/> 
+</h:form>
+   <p>Go back to the main page <h:link outcome="index" value=" Back to main page" />.</p> 
+
+            </div>
+
+</h:body> 
+
+    
+</html>
+

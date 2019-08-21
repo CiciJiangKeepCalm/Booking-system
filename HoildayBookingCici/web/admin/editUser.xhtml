@@ -1,0 +1,164 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+    <h:head> 
+        <title>Edit User</title> 
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    </h:head> 
+    <h:body class="container"> 
+        <!-- Start Header --> 
+        <header> 
+            <h1>Edit user</h1> 
+        </header> 
+       
+        <article> 
+            <h3>Enter user details</h3> 
+            <hr /> 
+            <!-- Form -->
+            <div class="well bs-component form-horizontal">
+                <h:form> 
+                    <fieldset>
+                        <legend>Please enter the user information
+                        </legend>
+
+                        <!-- This solution uses a more complex mark up that utilizes a CSS framework to enable a responsive view. -->
+                        <!-- Basically the idea is that certain CSS class will be loaded upon invalid validation -->
+                        <!-- Name input --> 
+                        <div class="form-group #{!id.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="ID" />
+                            <div class="col-lg-10">
+                                <h:inputText id="userId" 
+                                             class="form-control"
+                                             label="Name" size="32" value="#{userBean.id}" binding="#{id}" required="true" requiredMessage="Please enter your name!"></h:inputText> 
+                                <h:message for="userId" class="#{!id.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group #{!lastName.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="LastName" />
+                            <div class="col-lg-10">
+                                <h:inputText id="userLastName" 
+                                             class="form-control"
+                                             label="Name" size="12" value="#{userBean.lastName}" binding="#{lastName}" required="true" requiredMessage="Please enter your name!"></h:inputText> 
+                                <h:message for="userLastName" class="#{!lastName.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group #{!firstName.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="firstName" />
+                            <div class="col-lg-10">
+                                <h:inputText id="userFitstName" 
+                                             class="form-control"
+                                             label="Name" size="32" value="#{userBean.firstName}" binding="#{firstName}" required="true"></h:inputText>
+                                            
+   
+                                <h:message for="userFirstName" class="#{!firstName.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group #{!email.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Email" />
+                            <div class="col-lg-10">
+                                <h:inputTextarea id="userEmail" 
+                                                 class="form-control"
+                                                 label="Name" rows="6" value="#{userBean.email}" binding="#{email}" required="true" requiredMessage="Please enter a message.">
+                                </h:inputTextarea> 
+                                <h:message for="userEmail" class="#{!email.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group #{!password.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Password" />
+                            <div class="col-lg-10">
+                                <h:inputTextarea id="userPassword" 
+                                                 class="form-control"
+                                                 label="Name" rows="6" value="#{userBean.password}" binding="#{password}" required="true" requiredMessage="Please enter a message.">
+                                </h:inputTextarea> 
+                                <h:message for="userPassword" class="#{!password.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group #{!type.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Type" />
+                            <div class="col-lg-10">
+                                <h:inputTextarea id="userType" 
+                                                 class="form-control"
+                                                 label="Name" rows="6" value="#{userBean.type}" binding="#{type}" required="true" requiredMessage="Please enter a message.">
+                                </h:inputTextarea> 
+                                <h:message for="userType" class="#{!type.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                         <div class="form-group #{!streetAddress.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Street Address" />
+                            <div class="col-lg-10">
+                                <h:inputTextarea id="userStreetAddress" 
+                                                 class="form-control"
+                                                 label="Name" rows="6" value="#{userBean.streetAddress}" binding="#{streetAddress}" required="true" requiredMessage="Please enter a message.">
+                                </h:inputTextarea> 
+                                <h:message for="userStreetAddress" class="#{!streetAddress.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group #{!city.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="City" />
+                            <div class="col-lg-10">
+                                <h:inputTextarea id="userCity" 
+                                                 class="form-control"
+                                                 label="Name" rows="6" value="#{userBean.city}" binding="#{city}" required="true" requiredMessage="Please enter a message.">
+                                </h:inputTextarea> 
+                                <h:message for="userCity" class="#{!city.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group #{!country.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Country" />
+                            <div class="col-lg-10">
+                                <h:inputTextarea id="userCountry" 
+                                                 class="form-control"
+                                                 label="Name" rows="6" value="#{userBean.country}" binding="#{country}" required="true" requiredMessage="Please enter a message.">
+                                </h:inputTextarea> 
+                                <h:message for="userCountry" class="#{!country.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group #{!postcode.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Postcode" />
+                            <div class="col-lg-10">
+                                <h:inputTextarea id="userPostcode" 
+                                                 class="form-control"
+                                                 label="Name" rows="6" value="#{userBean.postcode}" binding="#{postcode}" required="true" requiredMessage="Please enter a message.">
+                                </h:inputTextarea> 
+                                <h:message for="userPostcode" class="#{!postcode.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group #{!phoneNumber.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Phone Number" />
+                            <div class="col-lg-10">
+                                <h:inputTextarea id="userPhoneNumber" 
+                                                 class="form-control"
+                                                 label="Name" rows="6" value="#{userBean.phoneNumber}" binding="#{phoneNumber}" required="true" requiredMessage="Please enter a message.">
+                                </h:inputTextarea> 
+                                <h:message for="userPhoneNumber" class="#{!phoneNumber.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                         <h:commandButton id="submit" value="Submit" action="edit" class="btn btn-primary"/> 
+                    </fieldset>
+                </h:form>
+
+            </div>
+        </article> 
+   
+        
+        
+        <footer> 
+            <p>This project created by CICI</p> 
+        </footer> 
+        <!-- End Footer --> 
+    </h:body> 
+</html>
+

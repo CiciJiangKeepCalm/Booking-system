@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Holiday Booking System</title>
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    </h:head>
+ <h:body class="container"> 
+        <article> 
+            <h3>Search by combination</h3> 
+            <hr /> 
+            <!-- Form -->
+            <div class="well bs-component form-horizontal">
+           
+                <h:form> 
+                    <fieldset>
+                        <legend>Please tell us the information
+                        </legend>
+          <div class="form-group #{!lastName.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="LastName" />
+                            <div class="col-lg-10">
+                                <h:inputText id="userLastName" validatorMessage="Your Last Name can have only Alphabets"
+                                             class="form-control"
+                                             label="Name" size="12" value="#{userBean.lastName}" binding="#{lastName}" >
+                                <f:validateRegex pattern="^([a-zA-Z]+(.)?[\s]*)$" />
+                                
+                                </h:inputText> 
+                                <h:message for="userLastName" class="#{!lastName.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group #{!firstName.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="firstName" />
+                            <div class="col-lg-10">
+                                <h:inputText id="userFirstName" validatorMessage="Your Last Name can have only Alphabets"
+                                             class="form-control"
+                                             label="Name" size="12" value="#{userBean.firstName}" binding="#{firstName}" >
+                                     <f:validateRegex pattern="^([a-zA-Z]+(.)?[\s]*)$" />
+                                </h:inputText>
+                                            
+   
+                                <h:message for="userFirstName" class="#{!firstName.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+
+                       
+                        
+                        <div class="form-group #{!type.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Type" />
+                            <div class="col-lg-10">
+                                
+                         <h:selectOneMenu value="#{userBean.type}">
+                             <f:selectItems value="#{userBean.typeList}" var="String"
+                                                                itemLabel="#{String}" itemValue="#{String}" />
+                                                    </h:selectOneMenu>
+                              
+                                <h:message for="userType" class="#{!type.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                        
+                        
+   
+                        </fieldset>
+                     <h:commandButton id="submit" value="Search" action="responseFromSearchCom" class="btn btn-primary"/> 
+                     
+                     
+                </h:form> 
+</div> 
+
+
+	
+
+        </article>
+</h:body>
+</html>
+

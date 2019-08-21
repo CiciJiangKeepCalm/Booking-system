@@ -1,0 +1,163 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"> 
+    <h:head> 
+        <title>Add new user</title> 
+      
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    </h:head> 
+    <h:body class="container"> 
+        <article> 
+            <h3>Enter user details</h3> 
+            <hr /> 
+            <!-- Form -->
+            <div class="well bs-component form-horizontal">
+                <h:form> 
+                    <fieldset>
+                        <legend>Please enter the user information
+                        </legend>
+
+                   
+                        
+                        <div class="form-group #{!lastName.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="LastName" />
+                            <div class="col-lg-10">
+                                <h:inputText id="userLastName" validatorMessage="Your Last Name can have only Alphabets"
+                                             class="form-control"
+                                             label="Name" size="12" value="#{userBean.lastName}" binding="#{lastName}" required="true" requiredMessage="Please enter  name!">
+                                <f:validateRegex pattern="^([a-zA-Z]+(.)?[\s]*)$" />
+                                
+                                </h:inputText> 
+                                <h:message for="userLastName" class="#{!lastName.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group #{!firstName.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="firstName" />
+                            <div class="col-lg-10">
+                                <h:inputText id="userFirstName" validatorMessage="Your Last Name can have only Alphabets"
+                                             class="form-control"
+                                             label="Name" size="12" value="#{userBean.firstName}" binding="#{firstName}" required="true">
+                                     <f:validateRegex pattern="^([a-zA-Z]+(.)?[\s]*)$" />
+                                </h:inputText>
+                                            
+   
+                                <h:message for="userFirstName" class="#{!firstName.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group #{!email.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Email" />
+                            <div class="col-lg-10">
+                                <h:inputTextarea id="userEmail" validatorMessage="Must use this format:(e.g) xxxx@xxx.com"
+                                                 class="form-control"
+                                                 label="Name" rows="2" value="#{userBean.email}" binding="#{email}" required="true" requiredMessage="Please enter a message.">
+                                <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                                </h:inputTextarea> 
+                                <h:message for="userEmail" class="#{!email.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group #{!password.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Password" />
+                            <div class="col-lg-10">
+                                <h:inputTextarea id="userPassword" 
+                                                 class="form-control"
+                                                 label="Name" rows="2" value="#{userBean.password}" binding="#{password}" required="true" requiredMessage="Please enter a message.">
+                                </h:inputTextarea> 
+                                <h:message for="userPassword" class="#{!password.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group #{!type.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Type" />
+                            <div class="col-lg-10">
+                                
+                         <h:selectOneMenu value="#{userBean.type}">
+                             <f:selectItems value="#{userBean.typeList}" var="String"
+                                                                itemLabel="#{String}" itemValue="#{String}" />
+                                                    </h:selectOneMenu>
+                              
+                                <h:message for="userType" class="#{!type.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                        
+                         <div class="form-group #{!streetAddress.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Street Address" />
+                            <div class="col-lg-10">
+                                <h:inputTextarea id="userStreetAddress" 
+                                                 class="form-control"
+                                                 label="Name" rows="2" value="#{userBean.streetAddress}" binding="#{streetAddress}" required="true" requiredMessage="Please enter a message.">
+                                </h:inputTextarea> 
+                                <h:message for="userStreetAddress" class="#{!streetAddress.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group #{!city.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="City" />
+                            <div class="col-lg-10">
+                                <h:inputTextarea id="userCity" 
+                                                 class="form-control"
+                                                 label="Name" rows="2" value="#{userBean.city}" binding="#{city}" required="true" requiredMessage="Please enter a message.">
+                                </h:inputTextarea> 
+                                <h:message for="userCity" class="#{!city.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group #{!country.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Country" />
+                            <div class="col-lg-10">
+                                <h:inputTextarea id="userCountry" 
+                                                 class="form-control"
+                                                 label="Name" rows="2" value="#{userBean.country}" binding="#{country}" required="true" requiredMessage="Please enter a message.">
+                                </h:inputTextarea> 
+                                <h:message for="userCountry" class="#{!country.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group #{!postcode.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Postcode" />
+                            <div class="col-lg-10">
+                                <h:inputTextarea id="userPostcode" 
+                                                 class="form-control"
+                                                 label="Name" rows="2" value="#{userBean.postcode}" binding="#{postcode}" required="true" requiredMessage="Please enter a message.">
+                                </h:inputTextarea> 
+                                <h:message for="userPostcode" class="#{!postcode.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group #{!phoneNumber.valid ? 'has-error' : 'none'}">
+                            <h:outputLabel for="inputName" class="col-lg-2 control-label" value="Phone Number" />
+                            <div class="col-lg-10">
+                                <h:inputTextarea id="userPhoneNumber" validatorMessage="Must input number"
+                                                 class="form-control"
+                                                 label="Name" rows="2" value="#{userBean.phoneNumber}" binding="#{phoneNumber}" required="true" requiredMessage="Please enter a message.">
+                                  <f:validateRegex pattern="^([0-9]*)$" />
+                                </h:inputTextarea> 
+                                <h:message for="userPhoneNumber" class="#{!phoneNumber.valid ? 'label label-warning' : 'none'}" />
+                            </div>
+                        </div>
+                        
+                         <h:commandButton id="submit" value="New User" action="response" class="btn btn-primary"/> 
+                    </fieldset>
+              </h:form>
+            </div>
+            
+            
+            
+               
+        <p>Go back to the main page <h:link outcome="UserManagement" value=" Back to superior page" />.</p> 
+         
+        </article> 
+            
+        <footer> 
+            <p>This project created by CICI</p> 
+        </footer> 
+        <!-- End Footer --> 
+             
+    </h:body> 
+</html>
+

@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>Holiday Booking System</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <h:outputStylesheet library="css" name="table-style.css" />
+    <script src="js/modernizr.custom.js"></script>
+    </h:head>
+<h:body>
+<div class="wrap">
+<div class="header">
+	<div class="logo">
+<!--		<a href="index.html"><img src="resources/images/logo.png" alt="" /> </a>-->
+	</div>
+</div>
+</div>
+<div class="main">
+<div class="wrap">
+<div class="main clearfix">
+		<article> 
+            <h2> All users</h2>
+            <table class="order-table">
+                <tr>
+                    <th class="order-table-header" > Id</th>
+                    <th class="order-table-header" > firstName</th>
+                    <th class="order-table-header" > lastName</th>
+                    <th class="order-table-header" > Email</th>
+                    <th class="order-table-header" > password</th>
+                    <th class="order-table-header" > Type</th>
+                    <th class="order-table-header" > Street Address</th>
+                    <th class="order-table-header" > City</th>
+                    <th class="order-table-header" > Country</th>
+                    <th class="order-table-header" > postcode</th>
+                    <th class="order-table-header" > phone number</th>
+
+                </tr>
+                <tbody>
+                    <ui:repeat var="HBUser" value="#{userBean.allUsers}" varStatus="status">
+                        <h:panelGroup rendered="#{status.even}">
+                            <tr>
+                                <td class="order-table-even-row">#{HBUser.id}</td>
+                                <td class="order-table-even-row">#{HBUser.firstName}</td>
+                                <td class="order-table-even-row">#{HBUser.lastName}</td>
+                                <td class="order-table-even-row">#{HBUser.email}</td>
+                                <td class="order-table-even-row">#{HBUser.password}</td>
+                                <td class="order-table-even-row">#{HBUser.type}</td>
+                                <td class="order-table-even-row">#{HBUser.streetAddress}</td>
+                                <td class="order-table-even-row">#{HBUser.city}</td>
+                                <td class="order-table-even-row">#{HBUser.country}</td>
+                                <td class="order-table-even-row">#{HBUser.postcode}</td>
+                                <td class="order-table-even-row">#{HBUser.phoneNumber}</td>
+                            </tr>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{status.odd}">
+                            <tr>
+                                <td class="order-table-odd-row"> #{HBUser.id}</td>
+                                <td class="order-table-odd-row"> #{HBUser.firstName}</td>
+                                <td class="order-table-odd-row">#{HBUser.lastName}</td>
+                                <td class="order-table-odd-row">#{HBUser.email}</td>
+                                <td class="order-table-odd-row">#{HBUser.password}</td>
+                                <td class="order-table-odd-row">#{HBUser.type}</td>
+                                <td class="order-table-odd-row">#{HBUser.streetAddress}</td>
+                                <td class="order-table-odd-row">#{HBUser.city}</td>
+                                <td class="order-table-odd-row">#{HBUser.country}</td>
+                                <td class="order-table-odd-row">#{HBUser.postcode}</td>
+                                <td class="order-table-odd-row">#{HBUser.phoneNumber}</td>
+
+                            </tr>
+                        </h:panelGroup>
+                    </ui:repeat>
+                </tbody>
+            </table>   
+
+            <table class="order-table">
+                <tr>
+                    <th class="order-table-header" >Id</th>
+                    <th class="order-table-header" > Decription</th>
+                    <th class="order-table-header" > Name</th>
+                    <th class="order-table-header" > Type</th>
+                    <th class="order-table-header" > User_id</th>
+                      <th class="order-table-header" > Amount</th>
+                      <th class="order-table-header" > Date</th>
+                       <th class="order-table-header" > Price</th>
+
+
+                </tr>
+                <tbody>
+                    
+                    <h2>All transactions</h2>
+                    <ui:repeat var="HBTransaction" value="#{transactionBean.getAllTransactions()}" varStatus="status">
+                        <h:panelGroup rendered="#{status.even}">
+                            <tr>
+                                <td class="order-table-even-row">#{HBTransaction.id}</td>
+                                <td class="order-table-even-row">#{HBTransaction.description}</td>
+                                <td class="order-table-even-row">#{HBTransaction.name}</td>
+                                <td class="order-table-even-row">#{HBTransaction.type}</td>
+                                <td class="order-table-even-row">#{HBTransaction.userId}</td>
+                                 <td class="order-table-even-row">#{HBTransaction.amount}</td>
+                                <td class="order-table-even-row">#{HBTransaction.date}</td>
+                                <td class="order-table-even-row">#{HBTransaction.price}</td>
+
+
+                            </tr>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{status.odd}">
+                            <tr>
+                                <td class="order-table-odd-row">#{HBTransaction.id}</td>
+                                <td class="order-table-odd-row">#{HBTransaction.description}</td>
+                                <td class="order-table-odd-row">#{HBTransaction.name}</td>
+                                <td class="order-table-odd-row">#{HBTransaction.type}</td>
+                                <td class="order-table-odd-row">#{HBTransaction.userId}</td>
+                                 <td class="order-table-odd-row">#{HBTransaction.amount}</td>
+                                <td class="order-table-odd-row">#{HBTransaction.date}</td>
+                                <td class="order-table-odd-row">#{HBTransaction.price}</td>
+
+                            </tr>
+                        </h:panelGroup>
+                    </ui:repeat>
+                </tbody>
+            </table>   
+           
+            <table class="order-table">
+                <tr>
+                    <th class="order-table-header" >Id</th>
+                    <th class="order-table-header" > Name</th>
+                
+
+
+                </tr>
+                <tbody>
+                    
+                    <h2>All transactions types</h2>
+                    <ui:repeat var="type" value="#{typeBean.getAllTypes()}" varStatus="status">
+                        <h:panelGroup rendered="#{status.even}">
+                            <tr>
+                                <td class="order-table-even-row">#{type.id}</td>
+                                <td class="order-table-even-row">#{type.name}</td>
+                               
+
+
+                            </tr>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{status.odd}">
+                            <tr>
+                                <td class="order-table-odd-row">#{type.id}</td>
+                                <td class="order-table-odd-row">#{type.name}</td>
+                              
+
+                            </tr>
+                        </h:panelGroup>
+                    </ui:repeat>
+                </tbody>
+            </table>   
+            
+            <!-- End Form --> 
+        </article> 
+
+
+        
+								<script>
+                                                                    	//  The function to change the class
+			var changeClass = function (r,className1,className2) {
+				var regex = new RegExp("(?:^|\\s+)" + className1 + "(?:\\s+|$)");
+				if( regex.test(r.className) ) {
+					r.className = r.className.replace(regex,' '+className2+' ');
+			    }
+			    else{
+					r.className = r.className.replace(new RegExp("(?:^|\\s+)" + className2 + "(?:\\s+|$)"),' '+className1+' ');
+			    }
+			    return r.className;
+			};	
+
+			//  Creating our button in JS for smaller screens
+			var menuElements = document.getElementById('menu');
+			menuElements.insertAdjacentHTML('afterBegin','<button type="button" id="menutoggle" class="navtoogle" aria-hidden="true"><i aria-hidden="true" class="icon-menu"> </i> Menu</button>');
+
+			//  Toggle the class on click to show / hide the menu
+			document.getElementById('menutoggle').onclick = function() {
+				changeClass(this, 'navtoogle active', 'navtoogle');
+			}
+			document.onclick = function(e) {
+				var mobileButton = document.getElementById('menutoggle'),
+					buttonStyle =  mobileButton.currentStyle ? mobileButton.currentStyle.display : getComputedStyle(mobileButton, null).display;
+			}
+		</script>
+</div>
+</div>
+     <p>Go back to the main page <h:link outcome="index" value=" Back to main page" />.</p> 
+<div class="clear"></div>
+</div>
+<div class="footer1-bg">
+<div class="wrap">
+<div class="footer1">
+	<p class="w3-link"><span>Holiday Booking</span></p>
+</div>
+</div>
+</div>
+
+</h:body>
+</html>
